@@ -1,0 +1,33 @@
+from urllib.request import urlopen
+import json
+import pandas as pd
+import plotly.express as px
+
+# Fetch GeoJSON data for county boundaries
+with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
+    counties = json.load(response)
+
+# Read unemployment data
+df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/fips-unemp-16.csv",
+                 dtype={"fips": str})
+
+# Create choropleth map
+fig = px.choropleth(df, geojson=counties, locations='fips', color='unemp',
+                    color_continuous_scale="Viridis",
+                    range_color=(0, 12),
+                    scope="usa",
+                    labels={'unemp':'unemployment rate'}
+                   )
+
+# Update layout with a title
+fig.update_layout(
+    title_text = 'Unemployment Rates by County in the United States',
+    title_x = 0.5,  # Center title horizontally
+    geo=dict(
+        lakecolor='rgb(255, 255, 255)'  # Color of lakes
+    ),
+    margin={"r":0,"t":40,"l":0,"b":0}  # Adjust margin to accommodate title
+)
+
+# Display the figure
+fig.show()
