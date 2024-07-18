@@ -8,7 +8,8 @@ Data visualization is the art of presenting complex and unorganized data in a fo
 
 There are more ways to visualize, This is all about visualization using Python.  
 
-Visualizations includes:-
+Visualizations include:-
 
 1- Choropleth map
+
 2- Heat map
