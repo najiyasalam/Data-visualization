@@ -11,3 +11,4 @@ There are more ways to visualize, This is all about visualization using Python.
 Visualizations includes:-
 
 1- Choropleth map
+2- Heat map
