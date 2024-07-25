@@ -1,0 +1,11 @@
+import pandas as pd
+import plotly.express as px
+
+# Load the dataset from GitHub
+url = 'https://raw.githubusercontent.com/DrSufi/CyberData/main/cyber_data.csv'
+
+df = pd.read_csv(url)
+
+# Create a histogram
+fig = px.histogram(df, x="Rank Exploit",y="Country",color="Exploit")
+fig.show()
