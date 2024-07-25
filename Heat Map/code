@@ -1,7 +1,8 @@
 import plotly.express as px
 import pandas as pd
 
-# URL of the raw CSV file on GitHub
+# URL of the raw CSV file on GitHub 
+#Data copyright belongs to the owner
 url = 'https://raw.githubusercontent.com/DrSufi/CyberData/main/cyber_data.csv'
 
 # Load the dataset from the GitHub URL
@@ -11,8 +12,10 @@ df = pd.read_csv(url)
 print(df.head())
 
 # Assuming the DataFrame needs to be pivoted or processed for heatmap
-# Let's assume we want to visualize the percentage of Spam attacks per country
-pivot_df = df.pivot(index='Country', columns='AttackDate', values='Spam')
+# Let's assume we want to visualize the percentage of Rank Spam attacks per country
+# If you want other things to show then change these.
+
+pivot_df = df.pivot(index='Country', columns='AttackDate', values='Rank Spam')
 
 # Creating the heatmap with text annotations
 fig = px.imshow(pivot_df, text_auto=True, aspect="auto")
