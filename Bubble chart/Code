@@ -1,0 +1,13 @@
+import pandas as pd
+import plotly.express as px
+
+# Load data from the URL
+url = 'https://raw.githubusercontent.com/DrSufi/CyberData/main/cyber_data.csv'
+df = pd.read_csv(url)
+
+# Create bubble chart using Plotly Express
+fig = px.scatter(df, x="Rank Web Threat", y="Web Threat", size="Rank Spam", color="Country", 
+                 hover_name="Country", log_x=True, size_max=60)
+
+# Show the figure
+fig.show()
